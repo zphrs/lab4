@@ -5,8 +5,11 @@ from os import environ
 
 load_dotenv('.env')
 
+from flask_heroku import Heroku
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Code-321@localhost:5432/homework_users_db'
+heroku = Heroku(app)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Code-321@localhost:5432/homework_users_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = environ.get('SECRET_KEY')
 Db.init_app(app)
